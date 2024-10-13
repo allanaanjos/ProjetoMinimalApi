@@ -1,0 +1,12 @@
+C:\temp\ProjetoMinimalApi\Projeto.Domain\bin\Debug\net8.0\Projeto.Domain.deps.json
+C:\temp\ProjetoMinimalApi\Projeto.Domain\bin\Debug\net8.0\Projeto.Domain.dll
+C:\temp\ProjetoMinimalApi\Projeto.Domain\bin\Debug\net8.0\Projeto.Domain.pdb
+C:\temp\ProjetoMinimalApi\Projeto.Domain\obj\Debug\net8.0\Projeto.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\temp\ProjetoMinimalApi\Projeto.Domain\obj\Debug\net8.0\Projeto.Domain.AssemblyInfoInputs.cache
+C:\temp\ProjetoMinimalApi\Projeto.Domain\obj\Debug\net8.0\Projeto.Domain.AssemblyInfo.cs
+C:\temp\ProjetoMinimalApi\Projeto.Domain\obj\Debug\net8.0\Projeto.Domain.csproj.CoreCompileInputs.cache
+C:\temp\ProjetoMinimalApi\Projeto.Domain\obj\Debug\net8.0\Projeto.Domain.sourcelink.json
+C:\temp\ProjetoMinimalApi\Projeto.Domain\obj\Debug\net8.0\Projeto.Domain.dll
+C:\temp\ProjetoMinimalApi\Projeto.Domain\obj\Debug\net8.0\refint\Projeto.Domain.dll
+C:\temp\ProjetoMinimalApi\Projeto.Domain\obj\Debug\net8.0\Projeto.Domain.pdb
+C:\temp\ProjetoMinimalApi\Projeto.Domain\obj\Debug\net8.0\ref\Projeto.Domain.dll

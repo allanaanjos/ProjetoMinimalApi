@@ -22,8 +22,8 @@ namespace Projeto.API.handler
                     nome: request.Nome,
                     descricao: request.Descricao,
                     preco: request.Preco,
-                    time: request.DuracaoDoCurso,
-                    img: request.ImgUrl ?? string.Empty
+                    duracaoDoCurso: request.DuracaoDoCurso,
+                    imgUrl: request.ImgUrl ?? string.Empty
                 );
 
 
@@ -101,9 +101,32 @@ namespace Projeto.API.handler
 
         }
 
-        public Task<Response<Curso?>> UpdateCurso(UpdateCursoRquest rquest)
+        public async Task<Response<Curso?>> UpdateCurso(UpdateCursoRquest request)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var curso = await repository.GetByIdAsync(request.CursoId);
+
+                if (curso is null)
+                    return new Response<Curso?>
+                     (data: null, message: "Curso não encontrado.");
+
+                curso.Nome = request.Nome;
+                curso.Descricao = request.Descricao;
+                curso.Preco = request.Preco;
+                curso.DuracaoDoCurso = request.DuracaoDoCurso;
+                curso.ImgUrl = request.ImgUrl ?? curso.ImgUrl;
+
+                await repository.UpdateAsync(curso);
+
+                return new Response<Curso?>
+                 (curso, message: "Curso atualizado com sucesso!");
+            }
+            catch (Exception ex)
+            {
+                return new Response<Curso?>
+                 (data: null, message: $"Erro de servidor: {ex.Message}");
+            }
         }
     }
 }

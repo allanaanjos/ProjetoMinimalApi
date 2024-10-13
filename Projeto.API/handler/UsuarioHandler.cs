@@ -21,7 +21,6 @@ namespace Projeto.API.handler
             {
 
                 var user = new Usuario(
-                  0,
                   request.Nome,
                   request.Email,
                   BCrypt.Net.BCrypt.HashPassword(request.Senha)

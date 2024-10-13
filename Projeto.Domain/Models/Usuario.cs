@@ -11,20 +11,16 @@ namespace Projeto.Domain.Models
         public string Senha { get; set; } = string.Empty;
        public ICollection<UsuarioCurso> UsuarioCursos { get; set; } = new List<UsuarioCurso>();
 
-        public Usuario(int id, string nome, string email, string senha)
+        public Usuario(string nome, string email, string senha)
         {
-            Validacao(id, nome, email, senha);
-            Id = id;
+            Validacao(nome, email, senha);
             Nome = nome;
             Email = email;
             Senha = HashearSenha(senha);
         }
 
-        public void Validacao(int id, string nome, string email, string senha)
+        public void Validacao(string nome, string email, string senha)
         {
-            if (id <= 0)
-                throw new ArgumentException("O ID deve ser maior que 0.");
-
             if (string.IsNullOrWhiteSpace(nome))
                 throw new ArgumentException("O nome não pode ser vazio ou nulo.");
 
@@ -38,10 +34,9 @@ namespace Projeto.Domain.Models
                 throw new ArgumentException("A senha deve ter pelo menos 6 caracteres.");
         }
 
-        public void UpdateUsuario(int id, string nome, string email, string senha)
+        public void UpdateUsuario(string nome, string email, string senha)
         {
-            this.Validacao(id, nome, email, senha);
-            Id = id;
+            this.Validacao(nome, email, senha);
             Nome = nome;
             Email = email;
             Senha = HashearSenha(senha);

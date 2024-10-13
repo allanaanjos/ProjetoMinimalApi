@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\temp\\ProjetoMinimalApi\\Projeto.API\\Projeto.API.csproj": {}
+    "C:\\temp\\ProjetoMinimalApi\\Projeto.Api\\Projeto.API.csproj": {}
   },
   "projects": {
-    "C:\\temp\\ProjetoMinimalApi\\Projeto.API\\Projeto.API.csproj": {
+    "C:\\temp\\ProjetoMinimalApi\\Projeto.Api\\Projeto.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\temp\\ProjetoMinimalApi\\Projeto.API\\Projeto.API.csproj",
+        "projectUniqueName": "C:\\temp\\ProjetoMinimalApi\\Projeto.Api\\Projeto.API.csproj",
         "projectName": "Projeto.API",
-        "projectPath": "C:\\temp\\ProjetoMinimalApi\\Projeto.API\\Projeto.API.csproj",
+        "projectPath": "C:\\temp\\ProjetoMinimalApi\\Projeto.Api\\Projeto.API.csproj",
         "packagesPath": "C:\\Users\\luayn\\.nuget\\packages\\",
-        "outputPath": "C:\\temp\\ProjetoMinimalApi\\Projeto.API\\obj\\",
+        "outputPath": "C:\\temp\\ProjetoMinimalApi\\Projeto.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\luayn\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -60,6 +60,10 @@
               "version": "[8.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[8.0.0, )"
             },

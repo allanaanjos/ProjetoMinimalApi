@@ -13,18 +13,18 @@ namespace Projeto.Domain.Models
         public ICollection<UsuarioCurso> UsuarioCursos {get; set;} = new List<UsuarioCurso>();
 
        
-        public Curso( string nome, string descricao, double preco, TimeSpan time, string img = "")
+        public Curso( string nome, string descricao, double preco, TimeSpan duracaoDoCurso , string imgUrl = "")
         {
-            Validation(nome, descricao, preco, time, img);
+            Validation(nome, descricao, preco, duracaoDoCurso , imgUrl);
             Nome = nome;
             Descricao = descricao;
             Preco = preco;
-            DuracaoDoCurso = time;
-            ImgUrl = img;
+            DuracaoDoCurso = duracaoDoCurso ;
+            ImgUrl = imgUrl;
         }
 
         
-        public void Validation(string nome, string descricao, double preco, TimeSpan time, string img = "")
+        public void Validation(string nome, string descricao, double preco, TimeSpan duracaoDoCurso , string imgUrl = "")
         {
 
             if (string.IsNullOrWhiteSpace(nome))
@@ -36,21 +36,21 @@ namespace Projeto.Domain.Models
             if (preco <= 0)
                 throw new ArgumentException("O preço deve ser maior que 0.");
 
-            if (time <= TimeSpan.Zero)
+            if (duracaoDoCurso  <= TimeSpan.Zero)
                 throw new ArgumentException("A duração do curso deve ser positiva.");
 
-            if (!string.IsNullOrEmpty(img) && !Uri.IsWellFormedUriString(img, UriKind.Absolute))
+            if (!string.IsNullOrEmpty(imgUrl) && !Uri.IsWellFormedUriString(imgUrl, UriKind.Absolute))
                 throw new ArgumentException("A URL da imagem não é válida.");
         }
 
-        public void UpdateCurso(string nome, string descricao, double preco, TimeSpan time, string img = "")
+        public void UpdateCurso(string nome, string descricao, double preco, TimeSpan duracaoDoCurso , string imgUrl = "")
         {
-            Validation(nome, descricao, preco, time, img);
+            Validation(nome, descricao, preco, duracaoDoCurso , imgUrl);
             Nome = nome;
             Descricao = descricao;
             Preco = preco;
-            DuracaoDoCurso = time;
-            ImgUrl = img;
+            DuracaoDoCurso = duracaoDoCurso;
+            ImgUrl = imgUrl;
         }
     }
 }
