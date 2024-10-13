@@ -29,6 +29,8 @@ namespace Projeto.API.Data
             mb.Entity<Curso>().Property(X => X.DuracaoDoCurso).IsRequired();
             mb.Entity<Curso>().Property(x => x.ImgUrl).IsRequired(false);
 
+           // Tabela de UsuarioCurso
+
             mb.Entity<UsuarioCurso>()
                  .HasKey(uc => new { uc.UsuarioId, uc.CursoId });
 

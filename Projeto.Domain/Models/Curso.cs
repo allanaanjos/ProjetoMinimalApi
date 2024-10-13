@@ -13,10 +13,9 @@ namespace Projeto.Domain.Models
         public ICollection<UsuarioCurso> UsuarioCursos {get; set;} = new List<UsuarioCurso>();
 
        
-        public Curso(int id, string nome, string descricao, double preco, TimeSpan time, string img = "")
+        public Curso( string nome, string descricao, double preco, TimeSpan time, string img = "")
         {
-            Validation(id, nome, descricao, preco, time, img);
-            Id = id;
+            Validation(nome, descricao, preco, time, img);
             Nome = nome;
             Descricao = descricao;
             Preco = preco;
@@ -25,10 +24,8 @@ namespace Projeto.Domain.Models
         }
 
         
-        public void Validation(int id, string nome, string descricao, double preco, TimeSpan time, string img = "")
+        public void Validation(string nome, string descricao, double preco, TimeSpan time, string img = "")
         {
-            if (id <= 0)
-                throw new ArgumentException("O ID deve ser maior que 0.");
 
             if (string.IsNullOrWhiteSpace(nome))
                 throw new ArgumentException("O nome não pode ser vazio ou nulo.");
@@ -46,10 +43,9 @@ namespace Projeto.Domain.Models
                 throw new ArgumentException("A URL da imagem não é válida.");
         }
 
-        public void UpdateCurso(int id, string nome, string descricao, double preco, TimeSpan time, string img = "")
+        public void UpdateCurso(string nome, string descricao, double preco, TimeSpan time, string img = "")
         {
-            Validation(id, nome, descricao, preco, time, img);
-            Id = id;
+            Validation(nome, descricao, preco, time, img);
             Nome = nome;
             Descricao = descricao;
             Preco = preco;

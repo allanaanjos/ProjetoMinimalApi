@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Projeto.Domain.Request.Usuario
 {
-    public class UpdateUserRequest
+    public class UpdateUserRequest : Request
     {
         [Required(ErrorMessage = "O nome é obrigatório.")]
         public string? Nome { get; set; }
