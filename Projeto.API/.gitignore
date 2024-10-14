@@ -1,0 +1,66 @@
+# Ignore arquivos do Visual Studio
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Ignore a pasta bin e obj
+bin/
+obj/
+out/
+
+# Ignore pastas do NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+project.lock.json
+project.fragment.lock.json
+
+# Ignore arquivos de log
+*.log
+
+# Ignore pacotes gerados
+*.dll
+*.exe
+
+# Ignore arquivos temporários
+*.tmp
+*.temp
+*.pid
+*.log
+*.psess
+*.vspx
+
+# Arquivos de publicação
+publish/
+PublishScripts/
+PublishProfiles/
+
+# Pastas de build
+BuildArtifacts/
+build/
+artifacts/
+
+# Arquivos gerados pelo sistema
+*.DS_Store
+Thumbs.db
+
+# Arquivos de configuração locais
+appsettings.Local.json
+appsettings.Development.json
+
+# Ignore arquivos de backup
+*.bak
+
+# Ignore pastas do Docker
+docker-compose.*
+.docker/
+
+# Configurações de IDE
+.idea/
+.vscode/
+
+# Pastas específicas do sistema operacional
+.DS_Store

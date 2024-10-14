@@ -105,7 +105,7 @@ namespace Projeto.API.handler
         {
             try
             {
-                var curso = await repository.GetByIdAsync(request.CursoId);
+                var curso = await repository.GetByIdAsync(request.Id);
 
                 if (curso is null)
                     return new Response<Curso?>

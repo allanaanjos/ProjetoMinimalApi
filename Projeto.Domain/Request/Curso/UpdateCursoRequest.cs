@@ -4,9 +4,6 @@ namespace Projeto.Domain.Request.Curso
 {
     public class UpdateCursoRquest : Request
     {
-        [Required(ErrorMessage = "Id Inválido")]
-        public int CursoId { get; set; }
-
         [Required(ErrorMessage = "O nome do curso é obrigatório.")]
         [StringLength(100, ErrorMessage = "O nome do curso deve ter no máximo 100 caracteres.")]
         public string Nome { get; set; } = string.Empty;

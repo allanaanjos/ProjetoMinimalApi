@@ -1,14 +1,20 @@
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using Projeto.API.Data;
+using Projeto.API.EndPoints;
 using Projeto.API.handler;
 using Projeto.API.Repository;
 using Projeto.Domain.Handler;
 using Projeto.Domain.IRepository;
-using Projeto.Domain.Request.Usuario;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Minha API", Version = "v1" });
+});
+
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
@@ -23,84 +29,17 @@ builder.Services.AddScoped<ICursoRepository, CursoRepository>();
 
 var app = builder.Build();
 
-
-app.MapGet("/", () => "Hello World!");
-
-app.MapGet("/usuarios", async
-([FromServices] IUsuarioHandler handler,
-[FromQuery] int pageNumber = 1,
-[FromQuery] int pageSize = 10) =>
+if (app.Environment.IsDevelopment())
 {
-    try
+    app.UseDeveloperExceptionPage();
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
     {
-        var request = new GetAllUserRequest{
-            PageNumber = pageNumber,
-            PageSize = pageSize
-        };
-        
-        var response = await handler.GetAllUser(request);
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Minha API V1");
+        c.RoutePrefix = string.Empty;
+    });
+}
 
-        if (response.Data is null || !response.Data.Any())
-        {
-            return Results.NotFound
-              (new { message = "Usuários não encontrados" });
-        }
-
-        return Results.Ok(response.Data);
-    }
-    catch (Exception ex)
-    {
-        return Results.Problem
-          ($"Erro no servidor: {ex.Message}");
-    }
-});
-
-
-app.MapGet("/Usuarios/{id}", async
-([FromServices] IUsuarioHandler handler, [FromRoute] int userId) =>
-{
-    try
-    {
-        if(userId <= 0 )
-          return Results.BadRequest("ID invalido");
-
-        var request = new GetUserByIdRequest { UserId = userId };
-
-        var response = await handler.GetUserById(request);
-
-        if (response.Data == null)
-            return Results.NotFound("Usuário não encontrado.");
-
-        return Results.Ok(response.Data);
-    }
-    catch (Exception ex)
-    {
-        return Results.Problem($"Erro no servidor: {ex.Message}");
-    }
-});
-
-app.MapPost("/usuarios/criar", async
- ([FromServices] IUsuarioHandler handler, [FromBody] CreateUserRequest request) =>
-{
-    try
-    {
-        if (request == null)
-            return Results.BadRequest("Usuário inválido.");
-
-        var response = await handler.CreateUser(request);
-
-        if (response.Data == null)
-            return Results.BadRequest
-             (response.Message ?? "Erro ao criar o usuário.");
-
-        return Results.Created
-         ($"/usuarios/{response.Data.Id}", response.Data);
-    }
-    catch (Exception ex)
-    {
-        return Results.Problem
-         ($"Erro no servidor: {ex.Message}");
-    }
-});
+app.MapEndpoint();
 
 app.Run();
